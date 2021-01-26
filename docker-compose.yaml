@@ -47,8 +47,16 @@ services:
       KONG_PLUGINS:          oidc
 
   httpt:
-    image: adeo-docker-sandbox.jfrog.io/dockerfiles-collection/http-test-server:latest
+    image: ghcr.io/a-cordier/httpt:latest
     ports:
       - 8888:8080    
     networks:
-      - kong-net  
+      - kong-net
+      
+  adminer:
+    image: adminer
+    restart: always 
+    ports:
+      - 9999:8080
+    networks:
+      - kong-net
